@@ -15,17 +15,15 @@ import kotlin.jvm.JvmStatic;
 
 class ProducDetailsFragment : BaseFragment() {
     private lateinit var view: View
-    // private lateinit var context: Context
     private lateinit var tvDescription: TextView
     private lateinit var tvNumber: TextView
     private lateinit var tvPrice: TextView
     private lateinit var tvAvailability: TextView
     private lateinit var tvBrand: TextView
-    private var productController: ProductDetailsController = ProductDetailsController.getInstance()
+    private var productController: ProductDetailsController = ProductDetailsController.instance
 
     override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
-        // context = getContext()
 
         if (arguments != null) {
             val bundle = arguments
@@ -56,11 +54,11 @@ class ProducDetailsFragment : BaseFragment() {
         tvNumber = view.findViewById(R.id.tvNumber)
         tvPrice = view.findViewById(R.id.tvPrice)
         val product = productController.product
-        tvAvailability.setText(product.availability)
-        tvDescription.setText(product.productDescription)
-        tvBrand.setText(product.brand)
-        tvNumber.setText(product.productNumber)
-        tvPrice.setText(product.price)
+        tvAvailability.setText(product?.availability)
+        tvDescription.setText(product?.productDescription)
+        tvBrand.setText(product?.brand)
+        tvNumber.setText(product?.productNumber)
+        tvPrice.setText(product?.price)
     }
 
     override fun onResume() {
