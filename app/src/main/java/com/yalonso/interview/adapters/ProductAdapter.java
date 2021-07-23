@@ -61,8 +61,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
             int itemPosition = getAdapterPosition();
             Product product = productList.get(itemPosition);
 
-            productNumber.setText(product.productNumber);
-            productDescription.setText(product.productDescription);
+            productNumber.setText(product.getProductNumber());
+            productDescription.setText(product.getProductDescription());
 
             itemView.setOnClickListener(this.onClickListener);
         }
