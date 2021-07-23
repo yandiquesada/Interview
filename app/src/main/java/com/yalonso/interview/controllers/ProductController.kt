@@ -88,12 +88,12 @@ class ProductController {
         private var productControllerInstance: ProductController? = null
 
         @JvmStatic
-        val instance: ProductController?
+        val instance: ProductController
             get() {
                 if (productControllerInstance == null) {
                     productControllerInstance = ProductController()
                 }
-                return productControllerInstance
+                return productControllerInstance!!
             }
     }
 }

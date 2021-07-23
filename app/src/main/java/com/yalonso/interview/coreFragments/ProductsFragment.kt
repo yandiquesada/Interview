@@ -18,12 +18,11 @@ import com.yalonso.interview.framework.BaseFragment
 
 class ProductsFragment : BaseFragment() {
     private lateinit var view: View
-    private var context: Context? = null
     private lateinit var productsRecyclerView: RecyclerView
-    private var productController: ProductController = instance!!
+    private var productController: ProductController = instance
+
     override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
-        context = getContext()
     }
 
     override fun onCreateView(
@@ -37,18 +36,20 @@ class ProductsFragment : BaseFragment() {
     }
 
     private fun setUpProducts() {
-        productsRecyclerView = view.findViewById(R.id.products)
-        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
-        productsRecyclerView.setLayoutManager(layoutManager)
-        productsRecyclerView.setItemAnimator(DefaultItemAnimator())
-        val dividerItemDecoration = DividerItemDecoration(
-            productsRecyclerView.getContext(),
-            (layoutManager as LinearLayoutManager).orientation
-        )
-        productsRecyclerView.addItemDecoration(dividerItemDecoration)
-        val productList = productController.productList
-        val productAdapter = ProductAdapter(context, productList)
-        productsRecyclerView.setAdapter(productAdapter)
+        context?.let { context ->
+            productsRecyclerView = view.findViewById(R.id.products)
+            val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
+            productsRecyclerView.setLayoutManager(layoutManager)
+            productsRecyclerView.setItemAnimator(DefaultItemAnimator())
+            val dividerItemDecoration = DividerItemDecoration(
+                productsRecyclerView.getContext(),
+                (layoutManager as LinearLayoutManager).orientation
+            )
+            productsRecyclerView.addItemDecoration(dividerItemDecoration)
+            val productList = productController.productList
+            val productAdapter = ProductAdapter(context, productList)
+            productsRecyclerView.setAdapter(productAdapter)
+        }
     }
 
     override fun onResume() {
@@ -65,7 +66,8 @@ class ProductsFragment : BaseFragment() {
 
     companion object {
         @JvmField
-        var TAG = "ProductsFragment"
+        var TAG = ProductsFragment::class.java.simpleName
+
         @JvmStatic
         fun newInstance(): ProductsFragment {
             val productsFragment = ProductsFragment()
