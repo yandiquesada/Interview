@@ -1,5 +1,6 @@
 package com.yalonso.interview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.yalonso.interview.coreFragments.ProducDetailsFragment;
 import com.yalonso.interview.coreFragments.ProductsFragment;
 import com.yalonso.interview.models.Product;
+import com.yalonso.interview.presentation.products.ProductsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,28 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        pushFragment();
-    }
-
-    protected void pushFragment() {
-        productsFragment = ProductsFragment.newInstance();
-
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frame_body, productsFragment)
-                .addToBackStack(ProductsFragment.TAG)
-                .commit();
-    }
-
-    public void pushProductFragment(Product product) {
-        productsDetailsFragment = ProducDetailsFragment.newInstance(product);
-
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.frame_body, productsDetailsFragment)
-                .addToBackStack(ProductsFragment.TAG)
-                .commit();
+        Intent intent = new Intent(this, ProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

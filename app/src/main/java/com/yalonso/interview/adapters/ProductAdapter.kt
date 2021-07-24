@@ -41,9 +41,9 @@ class ProductAdapter(private val context: Context, private val productList: List
         }
 
         var onClickListener = View.OnClickListener {
-            val itemPosition = adapterPosition
-            val product = productList[itemPosition]
-            (context as MainActivity).pushProductFragment(product)
+//            val itemPosition = adapterPosition
+//            val product = productList[itemPosition]
+//            (context as MainActivity).pushProductFragment(product)
         }
 
         init {
