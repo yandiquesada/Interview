@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import com.yalonso.interview.handlers.CustomExceptionHandler;
+import com.yalonso.interview.framework.handlers.CustomExceptionHandler;
 
 public abstract class BaseFragment extends Fragment {
 

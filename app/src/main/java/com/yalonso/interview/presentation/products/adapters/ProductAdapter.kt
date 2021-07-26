@@ -1,4 +1,4 @@
-package com.yalonso.interview.adapters
+package com.yalonso.interview.presentation.products.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.yalonso.interview.MainActivity
 import com.yalonso.interview.R
-import com.yalonso.interview.adapters.ProductAdapter.ProductItemViewHolder
-import com.yalonso.interview.models.Product
+import com.yalonso.interview.presentation.products.adapters.ProductAdapter.ProductItemViewHolder
+import com.yalonso.interview.domain.models.Product
 
 class ProductAdapter(private val context: Context, private val productList: List<Product>) :
     RecyclerView.Adapter<ProductItemViewHolder>() {

@@ -2,13 +2,13 @@ package com.yalonso.interview;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.yalonso.interview.coreFragments.ProducDetailsFragment;
-import com.yalonso.interview.coreFragments.ProductsFragment;
-import com.yalonso.interview.models.Product;
+import com.yalonso.interview.presentation.productDetails.ProducDetailsFragment;
+import com.yalonso.interview.presentation.products.ProductsFragment;
 import com.yalonso.interview.presentation.products.ProductsActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,5 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProductsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+
+
+//        ProductRepository pr =  new ProductRepository();
+//        ProductResponse productResponse = pr.getProducts(this);
+//        Log.e("YQA", "repo");
     }
 }

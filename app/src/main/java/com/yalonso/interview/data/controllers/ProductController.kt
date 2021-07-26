@@ -1,6 +1,6 @@
-package com.yalonso.interview.controllers
+package com.yalonso.interview.data.controllers
 
-import com.yalonso.interview.models.Product
+import com.yalonso.interview.domain.models.Product
 import java.util.*
 
 

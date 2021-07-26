@@ -1,14 +1,11 @@
 package com.yalonso.interview.presentation.products
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.yalonso.interview.R
-import com.yalonso.interview.coreFragments.ProducDetailsFragment
-import com.yalonso.interview.coreFragments.ProductsFragment
-import com.yalonso.interview.coreFragments.ProductsFragment.Companion.newInstance
+import com.yalonso.interview.presentation.productDetails.ProducDetailsFragment
+import com.yalonso.interview.presentation.products.ProductsFragment.Companion.newInstance
 
 class ProductsActivity: AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.yalonso.interview.coreFragments
+package com.yalonso.interview.presentation.productDetails
 
 
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.yalonso.interview.R
-import com.yalonso.interview.controllers.ProductDetailsController
+import com.yalonso.interview.data.controllers.ProductDetailsController
 import com.yalonso.interview.framework.BaseFragment
-import com.yalonso.interview.models.Product
+import com.yalonso.interview.domain.models.Product
 
 import kotlin.jvm.JvmStatic;
 

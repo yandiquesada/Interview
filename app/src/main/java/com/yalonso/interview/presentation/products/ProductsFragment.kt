@@ -1,4 +1,4 @@
-package com.yalonso.interview.coreFragments
+package com.yalonso.interview.presentation.products
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,15 +9,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yalonso.interview.R
-import com.yalonso.interview.adapters.ProductAdapter
-import com.yalonso.interview.controllers.ProductController
-import com.yalonso.interview.controllers.ProductController.Companion.instance
+import com.yalonso.interview.presentation.products.adapters.ProductAdapter
 import com.yalonso.interview.framework.BaseFragment
+import com.yalonso.interview.presentation.ProductViewModel
 
 class ProductsFragment : BaseFragment() {
     private lateinit var view: View
     private lateinit var productsRecyclerView: RecyclerView
-    private var productController: ProductController = instance
+    private var productViewModel = ProductViewModel()
 
     override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
@@ -44,8 +43,8 @@ class ProductsFragment : BaseFragment() {
                 (layoutManager as LinearLayoutManager).orientation
             )
             productsRecyclerView.addItemDecoration(dividerItemDecoration)
-            val productList = productController.productList
-            val productAdapter = ProductAdapter(context, productList)
+            val productList = productViewModel.getAllProducts(context)
+            val productAdapter = ProductAdapter(context, productList.productData.products)
             productsRecyclerView.setAdapter(productAdapter)
         }
     }
