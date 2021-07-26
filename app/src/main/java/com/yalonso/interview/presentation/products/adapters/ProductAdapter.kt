@@ -24,7 +24,7 @@ class ProductAdapter(private val context: Context,
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return 0
     }
 
     inner class ProductItemViewHolder(itemView: View) :
@@ -34,16 +34,16 @@ class ProductAdapter(private val context: Context,
 
         fun bind() {
             val itemPosition = adapterPosition
-            val (productNumber1, productDescription1) = productList[itemPosition]
-            productNumber.text = productNumber1
-            productDescription.text = productDescription1
+            val product = productList[itemPosition]
+            productNumber.text = product.productNumber
+
             itemView.setOnClickListener(onClickListener)
         }
 
         var onClickListener = View.OnClickListener {
             val itemPosition = adapterPosition
             val product = productList[itemPosition]
-            onProductSelectedAction(product)
+
         }
 
         init {

@@ -50,11 +50,7 @@ class ProductsFragment : BaseFragment() {
             val productList = productViewModel.getAllProducts(context)
 
             val onProductSelectedAction: (product: Product) -> Any = { product ->
-                val intent  = Intent(context, ProductDetailsActivity::class.java)
-                val bundle = Bundle()
-                bundle.putParcelable("product", product)
-                intent.putExtras(bundle)
-                startActivity(intent)
+
             }
 
             val productAdapter = ProductAdapter(context, productList.productData.products, onProductSelectedAction)
