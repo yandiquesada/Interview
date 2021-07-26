@@ -31,7 +31,6 @@ class ProductAdapter(private val context: Context,
         RecyclerView.ViewHolder(itemView) {
         private val productNumber: TextView
         private val productDescription: TextView
-        // private val itemView: View
 
         fun bind() {
             val itemPosition = adapterPosition
@@ -50,7 +49,6 @@ class ProductAdapter(private val context: Context,
         init {
             productNumber = itemView.findViewById(R.id.product_number)
             productDescription = itemView.findViewById(R.id.description)
-            // this.itemView = itemView
         }
     }
 }

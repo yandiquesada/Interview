@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.yalonso.interview.R
-import com.yalonso.interview.data.controllers.ProductDetailsController
 import com.yalonso.interview.framework.BaseFragment
 import com.yalonso.interview.domain.models.Product
 
@@ -20,20 +19,21 @@ class ProducDetailsFragment : BaseFragment() {
     private lateinit var tvPrice: TextView
     private lateinit var tvAvailability: TextView
     private lateinit var tvBrand: TextView
-    private var productController: ProductDetailsController = ProductDetailsController.instance
+    private var product: Product? = null
 
     override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
 
         if (arguments != null) {
             val bundle = arguments
-            val product = Product()
-            product.brand = bundle!!.getString(brandKey)!!
-            product.productDescription = bundle.getString(descriptionKey)!!
-            product.productNumber = bundle.getString(numberKey)!!
-            product.price = bundle.getString(priceKey)!!
-            product.availability = bundle.getString(availabilityKey)!!
-            productController.product = product
+            product = Product()
+            product?.apply {
+                brand = bundle!!.getString(brandKey)!!
+                productDescription = bundle.getString(descriptionKey)!!
+                productNumber = bundle.getString(numberKey)!!
+                price = bundle.getString(priceKey)!!
+                availability = bundle.getString(availabilityKey)!!
+            }
         }
     }
 
@@ -53,7 +53,6 @@ class ProducDetailsFragment : BaseFragment() {
         tvBrand = view.findViewById(R.id.tvBrand)
         tvNumber = view.findViewById(R.id.tvNumber)
         tvPrice = view.findViewById(R.id.tvPrice)
-        val product = productController.product
         tvAvailability.setText(product?.availability)
         tvDescription.setText(product?.productDescription)
         tvBrand.setText(product?.brand)
