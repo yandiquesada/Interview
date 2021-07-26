@@ -1,7 +1,10 @@
 package com.yalonso.interview.domain.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Product (
     @SerializedName("mpn") var productNumber: String = "",
     @SerializedName("title") var productDescription: String = "",
@@ -9,5 +12,5 @@ data class Product (
     @SerializedName("inventory") var availability: String = "",
     @SerializedName("image_url") var imageUrl: String = "",
     var brand: String = "Carrier"
-)
+): Parcelable
 

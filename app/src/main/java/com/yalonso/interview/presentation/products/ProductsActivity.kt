@@ -27,14 +27,4 @@ class ProductsActivity: AppCompatActivity() {
             .addToBackStack(ProductsFragment.TAG)
             .commit()
     }
-
-//    fun pushProductFragment(product: Product?) {
-//        productsDetailsFragment = newInstance(product!!)
-//        fragmentManager = supportFragmentManager
-//        fragmentManager.beginTransaction()
-//            .replace(R.id.frame_body, productsDetailsFragment)
-//            .addToBackStack(ProductsFragment.TAG)
-//            .commit()
-//    }
-
 }

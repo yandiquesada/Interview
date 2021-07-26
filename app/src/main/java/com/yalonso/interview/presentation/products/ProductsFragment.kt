@@ -1,6 +1,8 @@
 package com.yalonso.interview.presentation.products
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +11,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yalonso.interview.R
+import com.yalonso.interview.domain.models.Product
 import com.yalonso.interview.presentation.products.adapters.ProductAdapter
 import com.yalonso.interview.framework.BaseFragment
 import com.yalonso.interview.presentation.ProductViewModel
+import com.yalonso.interview.presentation.productDetails.ProductDetailsActivity
 
 class ProductsFragment : BaseFragment() {
     private lateinit var view: View
@@ -44,7 +48,16 @@ class ProductsFragment : BaseFragment() {
             )
             productsRecyclerView.addItemDecoration(dividerItemDecoration)
             val productList = productViewModel.getAllProducts(context)
-            val productAdapter = ProductAdapter(context, productList.productData.products)
+
+            val onProductSelectedAction: (product: Product) -> Any = { product ->
+                val intent  = Intent(context, ProductDetailsActivity::class.java)
+                val bundle = Bundle()
+                bundle.putParcelable("product", product)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            val productAdapter = ProductAdapter(context, productList.productData.products, onProductSelectedAction)
             productsRecyclerView.setAdapter(productAdapter)
         }
     }

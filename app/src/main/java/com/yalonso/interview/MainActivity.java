@@ -25,10 +25,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ProductsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-
-
-//        ProductRepository pr =  new ProductRepository();
-//        ProductResponse productResponse = pr.getProducts(this);
-//        Log.e("YQA", "repo");
     }
 }

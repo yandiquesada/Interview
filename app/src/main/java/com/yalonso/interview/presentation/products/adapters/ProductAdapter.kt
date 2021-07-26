@@ -10,7 +10,9 @@ import com.yalonso.interview.R
 import com.yalonso.interview.presentation.products.adapters.ProductAdapter.ProductItemViewHolder
 import com.yalonso.interview.domain.models.Product
 
-class ProductAdapter(private val context: Context, private val productList: List<Product>) :
+class ProductAdapter(private val context: Context,
+                     private val productList: List<Product>,
+                     private val onProductSelectedAction: (product: Product) -> Any) :
     RecyclerView.Adapter<ProductItemViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row, parent, false)
@@ -40,9 +42,9 @@ class ProductAdapter(private val context: Context, private val productList: List
         }
 
         var onClickListener = View.OnClickListener {
-//            val itemPosition = adapterPosition
-//            val product = productList[itemPosition]
-//            (context as MainActivity).pushProductFragment(product)
+            val itemPosition = adapterPosition
+            val product = productList[itemPosition]
+            onProductSelectedAction(product)
         }
 
         init {
