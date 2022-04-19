@@ -1,22 +1,19 @@
-package com.yalonso.interview.controllers;
+package com.yalonso.interview.repositories;
 
 import com.google.gson.Gson;
 import com.yalonso.interview.models.Product;
 import com.yalonso.interview.models.ProductResponse;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProductController {
-    private static ProductController productControllerInstance;
+public class ProductRepository {
+    private static ProductRepository productRepositoryInstance;
 
-    public static ProductController getInstance() {
-        if (productControllerInstance == null) {
-            productControllerInstance = new ProductController();
+    public static ProductRepository getInstance() {
+        if (productRepositoryInstance == null) {
+            productRepositoryInstance = new ProductRepository();
         }
-        return productControllerInstance;
+        return productRepositoryInstance;
     }
 
     public List<Product> getProductList() {

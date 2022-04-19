@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yalonso.interview.R;
 import com.yalonso.interview.adapters.ProductAdapter;
-import com.yalonso.interview.controllers.ProductController;
+import com.yalonso.interview.repositories.ProductRepository;
 import com.yalonso.interview.framework.BaseFragment;
 import com.yalonso.interview.models.Product;
 
@@ -25,7 +25,7 @@ public class ProductsFragment extends BaseFragment {
     private View view;
     private Context context;
     private RecyclerView productsRecyclerView;
-    private ProductController productController;
+    private ProductRepository productRepository;
 
     public static ProductsFragment newInstance() {
         ProductsFragment productsFragment = new ProductsFragment();
@@ -39,7 +39,7 @@ public class ProductsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         context = getActivity();
-        productController = ProductController.getInstance();
+        productRepository = ProductRepository.getInstance();
 
         if (getArguments() != null) {
             //get arguments get parcelable
@@ -61,7 +61,7 @@ public class ProductsFragment extends BaseFragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(productsRecyclerView.getContext(), ((LinearLayoutManager) layoutManager).getOrientation());
         productsRecyclerView.addItemDecoration(dividerItemDecoration);
 
-        List<Product> productList = productController.getProductList();
+        List<Product> productList = productRepository.getProductList();
         ProductAdapter productAdapter = new ProductAdapter(context, productList);
         productsRecyclerView.setAdapter(productAdapter);
     }
