@@ -29,18 +29,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
     @NonNull
     @Override
     public ProductItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_row, parent, false);
-        return new ProductItemViewHolder(view);
+        // final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_row, parent, false);
+        return new ProductItemViewHolder(null);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductItemViewHolder holder, int position) {
-        holder.bind();
+
     }
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return 0;
     }
 
     class ProductItemViewHolder extends RecyclerView.ViewHolder {
@@ -61,8 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
             int itemPosition = getAdapterPosition();
             Product product = productList.get(itemPosition);
 
-            productNumber.setText(product.productNumber);
-            productDescription.setText(product.title);
+            // TODO: add code here
 
             itemView.setOnClickListener(this.onClickListener);
         }
@@ -72,7 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
             public void onClick(View v) {
                 int itemPosition = getAdapterPosition();
                 Product product = productList.get(itemPosition);
-                //TODO: Improve this, do not depend on the Activity to push the fragment!!!
+                //TODO: Improve this, do not depend on the Activity to push the fragment!!! (low priority task, very nice to solve it)
                 ((ProductsActivity) context).pushProductFragment(product);
             }
         };

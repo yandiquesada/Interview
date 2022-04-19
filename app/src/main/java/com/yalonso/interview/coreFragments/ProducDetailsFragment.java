@@ -16,11 +16,6 @@ import com.yalonso.interview.models.Product;
 public class ProducDetailsFragment extends BaseFragment {
     private View view;
     private Context context;
-    private TextView tvDescription;
-    private TextView tvNumber;
-    private TextView tvPrice;
-    private TextView tvAvailability;
-    private TextView tvBrand;
     private ImageView productImage;
 
     private static String descriptionKey = "desc";
@@ -69,20 +64,7 @@ public class ProducDetailsFragment extends BaseFragment {
     }
 
     private void setUpProduct() {
-        tvAvailability = view.findViewById(R.id.tvAvailability);
-        tvDescription = view.findViewById(R.id.tvDescription);
-        tvBrand = view.findViewById(R.id.tvBrand);
-        tvNumber = view.findViewById(R.id.tvNumber);
         productImage = view.findViewById(R.id.productImage);
-
-        tvAvailability.setText(product.inventory);
-        tvDescription.setText(product.title);
-        tvNumber.setText(product.productNumber);
-        tvBrand.setText(product.brand);
-
-        Glide.with(this)
-                .load(product.imageUrl)
-                .into(productImage);
     }
 
     @Override
