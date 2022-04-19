@@ -4,18 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
-
-    public String productDescription = "";
-
-    public String price = "";
-
-    public String availability = "";
-
     @SerializedName("brand")
     @Expose
     public String brand = "";
-
-    //
 
     @SerializedName("title")
     @Expose
@@ -27,7 +18,7 @@ public class Product {
 
     @SerializedName("image_url")
     @Expose
-    public String ImageUrl = "";
+    public String imageUrl = "";
 
     @SerializedName("inventory")
     @Expose

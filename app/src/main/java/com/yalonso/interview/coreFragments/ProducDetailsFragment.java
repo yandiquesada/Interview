@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.yalonso.interview.R;
 import com.yalonso.interview.framework.BaseFragment;
 import com.yalonso.interview.models.Product;
@@ -19,12 +21,14 @@ public class ProducDetailsFragment extends BaseFragment {
     private TextView tvPrice;
     private TextView tvAvailability;
     private TextView tvBrand;
+    private ImageView productImage;
 
     private static String descriptionKey = "desc";
     private static String availabilityKey = "availa";
     private static String priceKey = "price";
     private static String brandKey = "brand";
     private static String numberKey = "number";
+    private static String imageUrlKey = "imageUrl";
 
     public static ProducDetailsFragment newInstance(Product product) {
         ProducDetailsFragment productsFragment = new ProducDetailsFragment();
@@ -34,6 +38,7 @@ public class ProducDetailsFragment extends BaseFragment {
         arguments.putString(availabilityKey, product.inventory);
         arguments.putString(numberKey, product.productNumber);
         arguments.putString(brandKey, product.brand);
+        arguments.putString(imageUrlKey, product.imageUrl);
         productsFragment.setArguments(arguments);
 
         return productsFragment;
@@ -52,6 +57,7 @@ public class ProducDetailsFragment extends BaseFragment {
             product.productNumber = bundle.getString(numberKey);
             product.inventory = bundle.getString(availabilityKey);
             product.brand = bundle.getString(brandKey);
+            product.imageUrl = bundle.getString(imageUrlKey);
         }
     }
 
@@ -67,12 +73,16 @@ public class ProducDetailsFragment extends BaseFragment {
         tvDescription = view.findViewById(R.id.tvDescription);
         tvBrand = view.findViewById(R.id.tvBrand);
         tvNumber = view.findViewById(R.id.tvNumber);
-        tvPrice = view.findViewById(R.id.tvPrice);
+        productImage = view.findViewById(R.id.productImage);
 
         tvAvailability.setText(product.inventory);
         tvDescription.setText(product.title);
         tvNumber.setText(product.productNumber);
         tvBrand.setText(product.brand);
+
+        Glide.with(this)
+                .load(product.imageUrl)
+                .into(productImage);
     }
 
     @Override
