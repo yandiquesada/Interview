@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yalonso.interview.MainActivity;
+import com.yalonso.interview.ProductsActivity;
 import com.yalonso.interview.R;
 import com.yalonso.interview.models.Product;
 
@@ -72,7 +72,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
             public void onClick(View v) {
                 int itemPosition = getAdapterPosition();
                 Product product = productList.get(itemPosition);
-                ((MainActivity) context).pushProductFragment(product);
+                //TODO: Improve this, do not depend on the Activity to push the fragment!!!
+                ((ProductsActivity) context).pushProductFragment(product);
             }
         };
     }

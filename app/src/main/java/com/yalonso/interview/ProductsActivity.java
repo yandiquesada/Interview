@@ -9,7 +9,7 @@ import com.yalonso.interview.coreFragments.ProducDetailsFragment;
 import com.yalonso.interview.coreFragments.ProductsFragment;
 import com.yalonso.interview.models.Product;
 
-public class MainActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity {
 
     ProductsFragment productsFragment;
     ProducDetailsFragment productsDetailsFragment;
