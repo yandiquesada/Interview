@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yalonso.interview.R;
-import com.yalonso.interview.controllers.ProductDetailsController;
 import com.yalonso.interview.framework.BaseFragment;
 import com.yalonso.interview.models.Product;
 
@@ -20,7 +19,6 @@ public class ProducDetailsFragment extends BaseFragment {
     private TextView tvPrice;
     private TextView tvAvailability;
     private TextView tvBrand;
-    private ProductDetailsController productController;
 
     private static String descriptionKey = "desc";
     private static String availabilityKey = "availa";
@@ -32,30 +30,28 @@ public class ProducDetailsFragment extends BaseFragment {
         ProducDetailsFragment productsFragment = new ProducDetailsFragment();
 
         Bundle arguments  = new Bundle();
-        arguments.putString(descriptionKey, product.productDescription);
-        arguments.putString(availabilityKey, product.availability);
-        arguments.putString(priceKey, product.price);
-        arguments.putString(brandKey, product.brand);
+        arguments.putString(descriptionKey, product.title);
+        arguments.putString(availabilityKey, product.inventory);
         arguments.putString(numberKey, product.productNumber);
+        arguments.putString(brandKey, product.brand);
         productsFragment.setArguments(arguments);
 
         return productsFragment;
     }
 
+    private Product product = null;
+
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         context = getActivity();
-        productController = ProductDetailsController.getInstance();
 
         if (getArguments() != null) {
             Bundle bundle = getArguments();
-            Product product = new Product();
-            product.brand = bundle.getString(brandKey);
-            product.productDescription = bundle.getString(descriptionKey);
+            product = new Product();
+            product.title = bundle.getString(descriptionKey);
             product.productNumber = bundle.getString(numberKey);
-            product.price = bundle.getString(priceKey);
-            product.availability = bundle.getString(availabilityKey);
-            productController.product = product;
+            product.inventory = bundle.getString(availabilityKey);
+            product.brand = bundle.getString(brandKey);
         }
     }
 
@@ -73,13 +69,10 @@ public class ProducDetailsFragment extends BaseFragment {
         tvNumber = view.findViewById(R.id.tvNumber);
         tvPrice = view.findViewById(R.id.tvPrice);
 
-        Product product = productController.product;
-
-        tvAvailability.setText(product.availability);
-        tvDescription.setText(product.productDescription);
-        tvBrand.setText(product.brand);
+        tvAvailability.setText(product.inventory);
+        tvDescription.setText(product.title);
         tvNumber.setText(product.productNumber);
-        tvPrice.setText(product.price);
+        tvBrand.setText(product.brand);
     }
 
     @Override

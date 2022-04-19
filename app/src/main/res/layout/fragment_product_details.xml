@@ -12,6 +12,7 @@
         android:text="TextView"
         tools:layout_editor_absoluteX="188dp"
         tools:layout_editor_absoluteY="96dp"
+        tools:text="this a product"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -62,7 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductI
             Product product = productList.get(itemPosition);
 
             productNumber.setText(product.productNumber);
-            productDescription.setText(product.productDescription);
+            productDescription.setText(product.title);
 
             itemView.setOnClickListener(this.onClickListener);
         }
